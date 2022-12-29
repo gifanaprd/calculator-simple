@@ -1,0 +1,85 @@
+<!-- Source by G-Code -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kalkulator Sederhana</title>
+    <!-- Menyertakan Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Menyertakan font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="text-center mb-5">Kalkulator Sederhana</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <form id="formKalkulator">
+            <div class="form-group">
+              <label for="inputAngka1">Angka 1</label>
+              <input type="number" class="form-control" id="inputAngka1" placeholder="Masukkan angka pertama">
+            </div>
+            <div class="form-group">
+              <label for="inputAngka2">Angka 2</label>
+              <input type="number" class="form-control" id="inputAngka2" placeholder="Masukkan angka kedua">
+            </div>
+            <div class="form-group">
+              <label for="selectOperasi">Operasi</label>
+              <select class="form-control" id="selectOperasi">
+                <option value="tambah">Tambah</option>
+                <option value="kurang">Kurang</option>
+                <option value="kali">Kali</option>
+                <option value="bagi">Bagi</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Hitung</button>
+          </form>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-12">
+          <h3 class="text-center">Hasil</h3>
+          <div id="hasilKalkulator" class="text-center"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Menyertakan jQuery dan Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.16.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <!-- Kode JavaScript untuk kalkulator -->
+    <script>
+      // Mendapatkan elemen form dan menetapkan event handler untuk submit form
+      const formKalkulator = document.getElementById('formKalkulator');
+      formKalkulator.addEventListener('submit', function(event) {
+        // Menghindari submit form secara default
+        event.preventDefault();
+        // Mendapatkan elemen input dan select
+        const inputAngka1 = document.getElementById('inputAngka1');
+        const inputAngka2 = document.getElementById('inputAngka2');
+        const selectOperasi = document.getElementById('selectOperasi');
+        // Mendapatkan nilai dari input dan select
+        const angka1 = parseInt(inputAngka1.value);
+        const angka2 = parseInt(inputAngka2.value);
+        const operasi = selectOperasi.value;
+        // Menghitung hasil sesuai dengan operasi yang dipilih
+        let hasil;
+        if (operasi === 'tambah') {
+          hasil = angka1 + angka2;
+        } else if (operasi === 'kurang') {
+          hasil = angka1 - angka2;
+        } else if (operasi === 'kali') {
+          hasil = angka1 * angka2;
+        } else if (operasi === 'bagi') {
+          hasil = angka1 / angka2;
+        }
+        // Menampilkan hasil ke elemen dengan id 'hasilKalkulator'
+        const hasilKalkulator = document.getElementById('hasilKalkulator');
+        hasilKalkulator.textContent = hasil;
+      });
+    </script>
+  </body>
+</html>
